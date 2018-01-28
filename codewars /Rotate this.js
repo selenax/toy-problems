@@ -18,4 +18,4 @@ function rotated (str1, str2) {
   return doubleStr.indexOf(str2) !== -1;      //check to see if return true;
 }
 
-console.log(rotated('hello world', 'orldhello w'));
+console.log(rotated('hello world', 'orldhello w')); //true

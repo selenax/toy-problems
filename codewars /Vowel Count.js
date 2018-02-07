@@ -13,3 +13,15 @@ function getCount(str) {
     });
     return count.length;
   }
+
+
+
+  function getCount(str) {
+    var regex = /[aeiou]/gi
+    var result;
+    result = str.match(regex)
+    if (result === null) {
+        return 0;
+    }
+    return result.length;
+     }

@@ -10,32 +10,47 @@
 
 // Output:"gvO Ujnft!"
 
-function LetterChanges (str) {
-    var result = ''
-    var newStr = '';
-    var letters = /[A-Ya-y]/gi;
-    var vowel = /[aeiou]/gi;
-    for(var x = 0; x < str.length; x++) {
-        if(str[x].match(letters)) {
-          newStr += String.fromCharCode(str.charCodeAt(x)+1)
-        } else if (str[x] === 'z') {
-            newStr += 'a';
-        } else if (str[x] === 'Z') {
-            newStr += 'A';
-        } else {
-            newStr += str[x];
-        }
+// function LetterChanges (str) {
+//     var result = ''
+//     var newStr = '';
+//     var letters = /[A-Ya-y]/gi;
+//     var vowel = /[aeiou]/gi;
+//     for(var x = 0; x < str.length; x++) {
+//         if(str[x].match(letters)) {
+//           newStr += String.fromCharCode(str.charCodeAt(x)+1)
+//         } else if (str[x] === 'z') {
+//             newStr += 'a';
+//         } else if (str[x] === 'Z') {
+//             newStr += 'A';
+//         } else {
+//             newStr += str[x];
+//         }
 
-    }
-    for(var y = 0; y < newStr.length; y++) {
-        if(newStr[y].match(vowel)) {
-            result += newStr[y].toUpperCase();
-        } else {
-            result += newStr[y];
-        }
-    }
-    return result;
+//     }
+//     for(var y = 0; y < newStr.length; y++) {
+//         if(newStr[y].match(vowel)) {
+//             result += newStr[y].toUpperCase();
+//         } else {
+//             result += newStr[y];
+//         }
+//     }
+//     return result;
+// }
+
+// console.log(LetterChanges("hellozzz*3"))
+// console.log(LetterChanges("fun timez!"))
+
+
+// replace each letter with the letter after; z -> a 
+// replace aeiou to capitals 
+function LetterChanges(str) {
+    var newStr = str.replace(/[a-z]/gi, function(char){
+        return (char === 'z' || char === 'Z' ? 'a' : String.fromCharCode(char.charCodeAt()+1));
+    });
+    return newStr.replace(/[aeiou]/gi, function(char) {
+        return char.toUpperCase();
+    });
 }
 
-console.log(LetterChanges("hellozzz*3"))
-console.log(LetterChanges("fun timez!")) 
+console.log(LetterChanges("hellozzz*3")) 
+console.log(LetterChanges("fun timez!"))

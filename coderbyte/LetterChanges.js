@@ -37,8 +37,8 @@
 //     return result;
 // }
 
-// console.log(LetterChanges("hellozzz*3"))
-// console.log(LetterChanges("fun timez!"))
+console.log(LetterChanges("hellozzz*3"))
+console.log(LetterChanges("fun timez!"))
 
 
 // replace each letter with the letter after; z -> a 

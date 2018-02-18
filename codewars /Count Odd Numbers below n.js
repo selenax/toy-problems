@@ -9,15 +9,21 @@
 
 
 
-
+//solution 1
 function oddCount(n){
     var array = [];
-    for(var x = 0; x < n; x++) {
-      if(x%2!==0){
+    for(var x = 1; x < n; x+=2) {
         array.push(x)
-      }
+      
     }
     return array.length;
   } 
+
+
+//solution 2
+  function oddCount(n){
+    return Math.floor(n/2)
+    } 
+  
 
   console.log(oddCount(15))

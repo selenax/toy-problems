@@ -15,8 +15,8 @@
 
 function peak(arr) {
     for(var x = 1; x < arr.length; x++) {
-        var rightSum = arr.slice(0, x).reduce((a,b) => a + b)
-        var leftSum = arr.slice(x+1).reduce((a,b) => a + b)
+        var rightSum = arr.slice(0, x).reduce((a,b) => a + b, 0)
+        var leftSum = arr.slice(x+1).reduce((a,b) => a + b, 0)
         if(rightSum === leftSum) {
             return x;
         }

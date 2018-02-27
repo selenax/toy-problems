@@ -16,7 +16,6 @@ function groupBy(list, iteratee) {
         // set value of key in obj to be array with list[x]
         var key = iteratee(list[x]);
         if(obj[key]) {
-            console.log(obj)
           obj[key].push(list[x]);
         } else {
           obj[key] = [list[x]];

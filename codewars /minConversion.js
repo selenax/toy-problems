@@ -1,11 +1,11 @@
-//minConversion
+//minute Conversion
 
 // Write a function, minuteConversion, that accepts a whole number of minutes and returns a string with a human readable string of hours and minutes.
 
 // If the number of minutes is more than 60, the minutes should be converted to hours. For both hours and minutes, the correct plural/singular form should be used, and if the value of hours or minutes is zero, the word should be omitted entirely. See the test cases for more details.
 
 
-var minConversion = function(num) {
+var minuteConversion = function(num) {
     if(num <= 60) {
       return num + ' minutes'
     } if (num%60 === 0) {

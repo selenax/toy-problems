@@ -16,4 +16,4 @@ function isRotated(str1, str2) {
     var doubleStr = str1.concat(str2);
     return doubleStr.indexOf(str1) !== -1;
     
-  }
+}

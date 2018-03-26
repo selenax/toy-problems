@@ -4,8 +4,8 @@
 function confirmEnding(str, target) {
     // "Never give up and good luck will find you."
     // -- Falcor
-    var num = target.length;
-    return str.substr(str.length-num) === target;
+    var index = target.length;
+    return str.substr(-index) === target;
   }
   
   

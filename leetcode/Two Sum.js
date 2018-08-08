@@ -17,6 +17,7 @@ var twoSum = function(nums, target) {
   
     for(var x = 0; x < nums.length; x++) {
       for(var y = x + 1; y < nums.length; y++) {
+        console.log(nums[x], nums[y]);
         if(nums[x] + nums[y] === target) {
           return [x, y];
           }
@@ -27,4 +28,4 @@ var twoSum = function(nums, target) {
 
 var nums = [2, 7, 11, 15]
 
-console.log(twoSum(nums, 17))  //[ 0, 3 ]
+console.log(twoSum(nums, 17)) //[ 0, 3 ]

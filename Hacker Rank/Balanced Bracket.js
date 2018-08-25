@@ -21,31 +21,31 @@
 // NO
 // YES
 
-// 'use strict';
+'use strict';
 
-// const fs = require('fs');
+const fs = require('fs');
 
-// process.stdin.resume();
-// process.stdin.setEncoding('utf-8');
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
 
-// let inputString = '';
-// let currentLine = 0;
+let inputString = '';
+let currentLine = 0;
 
-// process.stdin.on('data', inputStdin => {
-//     inputString += inputStdin;
-// });
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
 
-// process.stdin.on('end', _ => {
-//     inputString = inputString.replace(/\s*$/, '')
-//         .split('\n')
-//         .map(str => str.replace(/\s*$/, ''));
+process.stdin.on('end', _ => {
+    inputString = inputString.replace(/\s*$/, '')
+        .split('\n')
+        .map(str => str.replace(/\s*$/, ''));
 
-//     main();
-// });
+    main();
+});
 
-// function readLine() {
-//     return inputString[currentLine++];
-// }
+function readLine() {
+    return inputString[currentLine++];
+}
 
 // Complete the isBalanced function below.
 function isBalanced(str) {
@@ -67,24 +67,24 @@ var char = {
   "[": "]"
 };
 
-// function isChar(char) {
-//     var str = '(){}[]';
-//     return str.indexOf(char) !== 1;
+function isChar(char) {
+    var str = '(){}[]';
+    return str.indexOf(char) !== 1;
 
-// }
-// console.log(isChar('['))
-// function main() {
-//     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+}
+console.log(isChar('['))
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
-//     const t = parseInt(readLine(), 10);
+    const t = parseInt(readLine(), 10);
 
-//     for (let tItr = 0; tItr < t; tItr++) {
-//         const s = readLine();
+    for (let tItr = 0; tItr < t; tItr++) {
+        const s = readLine();
 
-//         let result = isBalanced(s);
+        let result = isBalanced(s);
 
-//         ws.write(result + "\n");
-//     }
+        ws.write(result + "\n");
+    }
 
-//     ws.end();
-// }
+    ws.end();
+}

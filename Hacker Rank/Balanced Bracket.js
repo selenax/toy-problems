@@ -51,7 +51,7 @@ function readLine() {
 function isBalanced(str) {
   var stack = [];
   for (var i = 0; i < str.length; i++) {
-    if (brackets[stack[stack.length - 1]] === str[i]) {
+    if (char[stack[stack.length - 1]] === str[i]) {
       stack.pop();
     } else {
       stack.push(string[i]);
@@ -67,12 +67,13 @@ var char = {
   "[": "]"
 };
 
-function isChar(char) {
-    var str = '(){}[]';
-    return str.indexOf(char) !== 1;
+// function isChar(char) {
+//     var str = '(){}[]';
+//     return str.indexOf(char) !== 1;
 
-}
-console.log(isChar('['))
+// }
+// console.log(isChar('['))
+
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 

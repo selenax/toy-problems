@@ -1,3 +1,5 @@
+//LIFO
+
 var Stack = function() {
   var someInstance = {};
 

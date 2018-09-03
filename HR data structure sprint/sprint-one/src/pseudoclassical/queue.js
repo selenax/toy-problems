@@ -8,5 +8,18 @@ var Queue = function() {
 };
 
 Queue.prototype.enqueue = function(value) {
-  this.
-}
+  this.storage[this.key] = value;
+  this.key++;
+};
+
+Queue.prototype.dequeue = function() {
+  if (this.key <= 0) { return; }
+  this.key--;
+  var removeItem = this.storage[this.key];
+  delete this.storage[this.key];
+  return removeItem;
+};
+
+Queue.prototype.size = function() {
+  return this.key;
+};

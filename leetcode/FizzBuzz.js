@@ -16,8 +16,22 @@ console.log(fizzBuzz())
 
 //refactor
 function fizzBuzz() {
-  for(let i = 0; i < 100;)
-  console.log((++i%3?'':'fizz')+(i%5?'':'buzz')||i)
+  for(let x = 0; x < 100;) {
+
+    //1%3===false -> '' 
+    //1%5===false -> ''
+    //'' + '' + i -> i;
+
+    //3%3===true -> Fizz
+    //3%5===false -> ''
+    //Fizz + '' -> Fizz
+
+    //15%3===true -> Fizz
+    //15%5===true -> Buzz
+    //Fizz + Buzz -> FizzBuzz
+
+    console.log((++x%3 ? '' : 'Fizz') + (x%5 ? '' : 'Buzz') || x)
+  }
 }
 
 console.log(fizzBuzz())

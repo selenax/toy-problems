@@ -10,7 +10,7 @@ function reverse(str) {
   return str.split('').reverse().join('');
 }
 
-//refactor
+// //refactor
 function reverse(str) {
   return str
     .split('')
@@ -18,7 +18,7 @@ function reverse(str) {
     .join('');
 }
 
-//refactor
+// //refactor
 function reverse(str) {
   let reversed = '';
   for(let char of str) {
@@ -27,8 +27,23 @@ function reverse(str) {
     //CBA = C + BA
     reversed = char + reversed;
   }
-  return reversed
+  return reversed;
 }
+
+
+//refactor
+function reverse(str) {
+  return str.split('').reduce((reversed, char) => {
+    return char + reversed;
+  }, '')
+}
+
+//refactor
+function reverse(str) {
+  return str.split('').reduce((reversed, char) => char + reversed, '');
+}
+
+
 
 console.log(reverse('ABC'))
 

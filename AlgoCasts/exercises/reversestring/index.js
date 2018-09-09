@@ -6,9 +6,9 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
-// function reverse(str) {
-//   return str.split('').reverse().join('');
-// }
+function reverse(str) {
+  return str.split('').reverse().join('');
+}
 
 //refactor
 function reverse(str) {
@@ -18,5 +18,18 @@ function reverse(str) {
     .join('');
 }
 
+//refactor
+function reverse(str) {
+  let reversed = '';
+  for(let char of str) {
+    //reversed = A + ''
+    //BA = B + A
+    //CBA = C + BA
+    reversed = char + reversed;
+  }
+  return reversed
+}
+
+console.log(reverse('ABC'))
 
 module.exports = reverse;

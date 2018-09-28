@@ -8,6 +8,45 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-class Queue {}
+
+//FIFO
+//remove: delete from front 
+class Queue {
+  constructor() {
+    this.storage = {};
+    this.first = 0;
+  }
+
+  add(value) {
+    this.storage[this.first] = value;
+    this.first++;
+  }
+
+  remove() {
+    this.first--;
+    var removeItem = this.storage[this.first];
+    delete this.storage[this.first];
+    return removeItem;
+  }
+}
+
+// refactor:
+
+
+class Queue {
+  constructor() {
+    this.storage = {};
+
+  }
+  //add to 
+  add(value) {
+    this.storage.unshift(value)
+  }
+
+  remove() {
+    this.storage.shift();
+  }
+}
+
 
 module.exports = Queue;

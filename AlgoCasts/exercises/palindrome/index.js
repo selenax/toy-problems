@@ -7,22 +7,32 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-
 function palindrome(str) {
-  var reversed = str.split('').reverse().join('')
+  var reversed = str
+    .split('')
+    .reverse()
+    .join('');
   return reversed === str;
-
 }
 
 //refactor
 function palindrome(str) {
   return str.split('').every((char, index) => {
     return char === str[str.length - index - 1];
-  })
-
+  });
 }
 
-console.log(palindrome('abba'))
-console.log(palindrome('abcdefg'))
+//refactor
+function palindrome(str) {
+  var newStr = str.split('');
+  return str.split('').every((char, index) => {
+    return char === newStr.pop();
+  });
+}
+
+// console.log('abbcx'.split('').pop())
+
+console.log(palindrome('abba'));
+console.log(palindrome('abcdefg'));
 
 module.exports = palindrome;

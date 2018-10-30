@@ -17,40 +17,55 @@
 // n = row
 // ' ' = n-(1)
 // ' ' = n-(2)
+
+
+
 function pyramid(n) {
-  const median = Math.floor((n + (n - 1)) / 2);
-  for (let row = 0; row < n; row++) {
-    let result = '';
-
-    for (let column = 0; column < n + (n - 1); column++) {
-      if (median - row <= column && median + row >= column) {
-        result += '#';
-      } else {
-        result += ' ';
-      }
+//N is number of row
+//console log '#' to form pyramid 
+//median defines how many columns
+//condition
+  //log # if median - row <= column && median + row >= column 
+    //IE: 1 <= median >= 3
+const median = Math.floor((n*2-1)/2); 
+for(var row = 0; row < n; row++) {
+  let stair = '';
+  for(var column = 0; column < n*2-1; column++) {
+    if(median - row <= column && median + row >= column) {
+      stair += '#'
+    } else {
+      stair += ' '
     }
-    console.log(result);
   }
+  console.log(stair)
+}
 }
 
-// refactor
+console.log(pyramid(3))
 
-function pyramid(n, row = 0, result = '') {
-  const median = Math.floor((n * 2 - 1) / 2);
-  // base case
-  if (row === n) { return; }
-  if (result.length === (n * 2 - 1)) { 
-    console.log(result);
-    return pyramid(n, row+1);
+
+//solution 2
+function pyramid(n, row = 0, level = '') {
+  //N is number of row
+//console log '#' to form pyramid 
+//median defines how many columns
+//condition
+  //log # if median - row <= column && median + row >= column 
+    //IE: 1 <= median >= 3
+  const median = Math.floor((n*2-1)/2);
+  if(row === n) { return; }
+  if(level.length === (n * 2 -1)) {
+    console.log(level);
+    return pyramid(n, row + 1);
   }
-  if(median - row <= result.length && median + row >= result.length) {
-    result += '#';
+  //condition
+  if(median - row <= level.length && median + row >= level.length) {
+    level += '#';
   } else {
-    result += ' ';
+    level += ' ';
   }
-  pyramid(n, row, result);
+  pyramid(n, row, level)
 }
-
 
 
 console.log(pyramid(3));

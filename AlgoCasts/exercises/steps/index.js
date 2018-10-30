@@ -17,60 +17,78 @@
 //       '### '
 //       '####'
 
-
+//solution 1
 function steps(n) {
-  for (let x = 0; x < n; x++) {
-    let result = '';
-    for (let y = 0; y < n; y++) {
-      if (x >= y) {
-        result += '#';
+  //n = number of rows
+  //create a variable to accumulate #
+  //account for spaces after the # sign
+  //add a # to each row
+  //last row should be all #
+
+
+  for(var row = 0; row < n; row++) {
+    let step = '';
+    for(var column = 0; column < n; column++) {
+      if(column <= row) {
+        step += '#';
       } else {
-        result += ' ';
+        step += ' ';
       }
-      // console.log(result, 'result')
     }
-    console.log(result);
+    console.log(step);
   }
+
 }
 
-//refactor
-function steps(n, row = 0, result = '') {
-// base case
-  // print at every iteration when column length === n
-  // return out of function when row === n
-// row <= col, print # else print ''
+
+console.log(steps(4))
+
+
+//solution 2
+function steps(n, row = 0, stair = '') {
+  // base case:
+  // return when n === row
+  // increment row by 1 if length of stair === n
   if (row === n) {
     return;
   }
-  if (result.length === n) {
-    console.log(result);
-    // recurse at end of each row
+  if (stair.length === n) {
+    console.log(stair);
+    // recurse at end of row
     return steps(n, row + 1);
   }
-  if (result.length <= row) {
-    result += '#';
+  // condition
+  if (stair.length <= row) {
+    stair += '#';
   } else {
-    result += ' ';
+    stair += ' ';
   }
-  // recurse through all the rows
-  steps(n, row, result);
+  // recurse all rows
+  steps(n, row, stair);
+  // console.log(stair, 'this is stair')
 }
 
+console.log(steps(4));
 
-//refactor
-function steps(n, row = 0, result = '') {
-  if (row === n) {
-    return;
-  }
-  if (result.length === n) {
-    console.log(result);
-    // recurse at end of each row
+
+//solution 3
+function steps(n, row = 0, step = '') {
+  //if row === n return
+  //if step.length === n 
+    //console.log step
+    //call steps and increment row by 1
+  //condition
+    //log # when step length is smaller or equal to row else log ' ' 
+  if(row === n) { return }; 
+  if(step.length === n ) {
+    console.log(step);
     return steps(n, row + 1);
   }
-  var chunk = result.length <= row ? '#' : ' ';
-  steps(n, row, result + chunk)
-
+  var chunk = step.length <= row ? '#' : ' ';
+  steps(n, row, step + chunk)
 }
-console.log(steps(3));
+console.log(steps(4));
+
+
 
 module.exports = steps;

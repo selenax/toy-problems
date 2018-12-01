@@ -20,7 +20,7 @@
 
 //need to acccount for 32 bit signed integer (2,147,483,647 )
 
-
+//runtime 157ms
 var reverse = function(x) {
     var num = 0;
     var str = x.toString().split('');
@@ -41,3 +41,16 @@ var reverse = function(x) {
   
   var num = 1534236469;
   console.log(reverse(num))
+
+
+//refactor: runtime 72 ms
+//input: integer, negative/positve
+//output: integer, reversed of input || 0 of over 32bit
+
+var reverse = function(x) {
+  let rev = x.toString().split('').reverse();
+  if(rev[rev.length-1] === '-') 
+  rev.unshift(rev.pop());       
+  let result = Number(rev.join('')) 
+  return result >= Math.pow(-2, 31) && result <= (Math.pow(2, 31)-1) ? result : 0;
+}

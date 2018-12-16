@@ -53,8 +53,11 @@ function characterFrequency(str) {
 //return in 2d array 
 for(let [key, value] of Object.entries(count).sort((a,b) => b[1]-a[1])){
   array.push([key,value])
+  console.log(array)
 }
-return array.sort((a,b) => a[0]-b[0])
+
+console.log(array)
+return array.sort((a,b) => a > b)
 }
 
 
@@ -105,5 +108,5 @@ function sortByAscend (a, b) {
 
 
 console.log(characterFrequency('mississippi')); 
-// console.log(characterFrequency('popopo'))
+console.log(characterFrequency('popopo'))
 // console.log(characterFrequency('mmmaaaiiibbb'))

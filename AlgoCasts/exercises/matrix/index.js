@@ -15,51 +15,41 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-
 function matrix(n) {
-  const results = [];
-
-  for (let i = 0; i < n; i++) {
-    results.push([]);
+  const result = [];
+  for (let x = 0; x < n; x++) {
+    result.push([]);
   }
 
-  let counter = 1;
-  let startColumn = 0;
-  let endColumn = n - 1;
   let startRow = 0;
   let endRow = n - 1;
-  while (startColumn <= endColumn && startRow <= endRow) {
-    // Top row
-    for (let i = startColumn; i <= endColumn; i++) {
-      results[startRow][i] = counter;
-      counter++;
+  let startCol = 0;
+  let endCol = n - 1;
+  let count = 1;
+  while (startRow <= endRow && startCol <= endCol) {
+    for (let x = startCol; x <= endCol; x++) {
+      result[startRow][x] = count;
+      count++;
     }
     startRow++;
-
-    // Right column
-    for (let i = startRow; i <= endRow; i++) {
-      results[i][endColumn] = counter;
-      counter++;
+    for (let x = startRow; x <= endRow; x++) {
+      result[x][endCol] = count;
+      count++;
     }
-    endColumn--;
-
-    // Bottom row
-    for (let i = endColumn; i >= startColumn; i--) {
-      results[endRow][i] = counter;
-      counter++;
+    endCol--;
+    for (let x = endCol; x >= startCol; x--) {
+      result[endRow][x] = count;
+      count++;
     }
     endRow--;
-
-    // start column
-    for (let i = endRow; i >= startRow; i--) {
-      results[i][startColumn] = counter;
-      counter++;
+    for (let x = endRow; x >= startRow; x--) {
+      result[x][startCol] = count;
+      count++;
     }
-    startColumn++;
+    startCol++;
   }
-
-  return results;
+  return result;
 }
 
-
+console.log(matrix(3));
 module.exports = matrix;

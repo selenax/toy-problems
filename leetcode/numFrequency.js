@@ -15,6 +15,7 @@ function numFrequent(array, k) {
     for(let [key, value] of Object.entries(count).sort((a,b) => b[1]-a[1])) {
       if(result.length < k) {
       result.push(Number(key))
+      console.log(result)
     }
   }
   

@@ -22,3 +22,6 @@ function isDiagonalMatrix(matrix) {
 }
 
 console.log(isDiagonalMatrix([[1, 0, 0], [0, 2, 0], [0, 0, 3]]));
+
+
+console.log(Math.floor(10/3), 10)

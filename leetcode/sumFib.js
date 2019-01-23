@@ -4,7 +4,7 @@
 
 // For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
 
-//given fib number, return all the sum off all fib number that is less than or equal to num
+//given fib number, return all the sum off all fib number that is less than or equal to num 
 
 // function fibonacci(num){
 //  let arr = [0,1];
@@ -14,40 +14,40 @@
 //  return arr;
 // }
 
-function fibonacci(num) {
+function fibonacci(num){
   let a = 1;
   let b = 0;
   let temp;
-
-  while (num > 1) {
+  
+  while(num >= 1) {
     temp = a;
     a = a + b;
     b = temp;
     num--;
-  }
-  return b;
+ }
+ return b;
 }
 
-function fibonacci(num) {
-  if (num < 2) return num;
-  return fibonacci(num - 1) + fibonacci(num - 2);
+function fibonacci(num){
+  if(num <= 1) return num;
+  return fibonacci(num-1) + fibonacci(num-2)
 }
 
-console.log(fibonacci(4));
+console.log(fibonacci(4))
+
 
 function sumFibs(num) {
-  let sum = 0,
-    current = 1;
-  prev = 0;
-  while (current <= num) {
-    if (current % 2 !== 0) {
-      sum += current;
+  let sum = 0, current = 1; prev = 0;
+  while(current <= num) {
+    if(current % 2 !== 0) {
+      sum += current
     }
     current += prev;
     prev = current - prev;
   }
   return sum;
 }
+
 
 console.log(sumFibs(10));
 

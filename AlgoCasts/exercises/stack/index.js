@@ -11,22 +11,7 @@
 //   s.pop(); // returns 1
 
 //FILO
-class Stack {
-  constructor() {
-    this.data = [];
-  }
-  push(value) {
-    this.data.push(value);
-  }
-  pop() {
-    return this.data.pop();
-  }
-
-  // peek returns the first element but doesnt pop it
-  peek() {
-    return this.data[this.data.length - 1];
-  }
-}
+class Stack {}
 
 // pseudoclassical
 function Stack() {

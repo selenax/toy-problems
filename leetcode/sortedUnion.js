@@ -12,28 +12,26 @@
 //n arrays in argument
 //keep original order
 //final array should have no duplicates
-function uniteUnique(arr) {
-  let arg = [...arguments].flat();
-  let result = [];
-  arg.filter(function(value) {
-    if (!result.includes(value)) {
-      result.push(value);
-    }
-  });
-  return result;
-}
+// function uniteUnique(arr) {
+//   let arg = [...arguments].flat();
+//   let result = [];
+//   arg.filter(function(value) {
+//     if (!result.includes(value)) {
+//       result.push(value);
+//     }
+// }
 
 //refactor
 
 function uniteUnique(arr) {
   let arr1 = [...arguments].flat();
-  // console.log(arr1)
+  console.log(arr1);
   return [...new Set(arr1)];
 }
 
 //refactor
-function uniteUnique(arr) {
-  return [...new Set([...arguments].flat())];
-}
+// function uniteUnique(arr) {
+//   return [...new Set([...arguments].flat())];
+// }
 
-uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));

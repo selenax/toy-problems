@@ -29,7 +29,7 @@
 
 // The first non-repeating character in s, or '_' if there are no characters that do not repeat.
 
-// console.time();
+console.time('1');
 function firstNotRepeatingCharacter(s) {
   let letter = {};
   for (let x of s) {
@@ -47,20 +47,38 @@ function firstNotRepeatingCharacter(s) {
   return '_';
 }
 console.log(firstNotRepeatingCharacter('abacabad'));
-// console.timeEnd();
+console.timeEnd('1');
 
 //refactor with indexOf for faster execution time
-// console.time();
+console.time();
 function firstNotRepeatingCharacter(string) {
-  for (let x = 0; x < string.length; x++) {
-    let letter = string[x];
-    if (string.indexOf(letter) === x && string.indexOf(letter, x + 1) === -1) {
-      return letter;
+  // for (let x = 0; x < string.length; x++) {
+  ?AZASIOP[]
+  2`11/   let letter = string[x];
+  //    //check if letter is duplicated and check from next index on if letter isnt found
+  //   if (string.indexOf(letter) === x && string.indexOf(letter, x + 1) === -1) {
+  //     return letter;
+  //   }
+  // }
+  // return '-';
+
+  var result = '_';
+
+  while (string) {
+    var len = string.length;
+    var char = string[0];
+    console.log(char)
+    var regex = new RegExp(char, 'gi');
+    console.log(regex);
+    string = string.replace(regex, '');
+    console.log(string)
+    if (string.length == len - 1) {jry
+      result = char;
+      break;
     }
   }
-  return '-';
+  return result;
 }
+
 console.log(firstNotRepeatingCharacter('abacabad'));
 console.timeEnd();
-
-// console.log(firstNotRepeatingCharacter('abacabad'));

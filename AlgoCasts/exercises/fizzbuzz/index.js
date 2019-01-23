@@ -12,13 +12,39 @@
 //   4
 //   buzz
 
+// function fizzBuzz(n) {
+//   for (let x = 1; x <= n; x++) {
+//     if (x % 3 === 0 && x % 5 === 0) {
+//       console.log('fizzbuzz');
+//     } else if (x % 3 === 0) {
+//       console.log('fizz');
+//     } else if (x % 5 === 0) {
+//       console.log('buzz');
+//     } else {
+//       console.log(x);
+//     }
+//   }
+// }
+
+// //refactor
+// function fizzBuzz(n) {
+//   for (let x = 1; x <= n; x++) {
+//     console.log((x % 3 ? '' : 'fizz') + (x % 5 ? '' : 'buzz') || x);
+//   }
+// }
+
+// Write a program that console logs the numbers
+// from 1 to n. But for multiples of three print
+// “fizz” instead of the number and for the multiples
+// of five print “buzz”. For numbers which are multiples
+// of both three and five print “fizzbuzz”.
 function fizzBuzz(n) {
   for (let x = 1; x <= n; x++) {
     if (x % 3 === 0 && x % 5 === 0) {
       console.log('fizzbuzz');
-    } else if (x % 3 === 0) {
+    } else if (x % 3) {
       console.log('fizz');
-    } else if (x % 5 === 0) {
+    } else if (x % 5) {
       console.log('buzz');
     } else {
       console.log(x);
@@ -26,13 +52,11 @@ function fizzBuzz(n) {
   }
 }
 
-//refactor
 function fizzBuzz(n) {
-  for (let x = 1; x <=n; x++) {
-    console.log((x%3 ? '' : 'fizz') + (x%5 ? '' : 'buzz') || x);
+  for (x = 1; x <= n; x++) {
+    console.log((x % 3 ? '' : 'fizz') + (x % 5 ? '' : 'buzz') || x);
   }
 }
-
-console.log(fizzBuzz(5))
+console.log(fizzBuzz(5));
 
 module.exports = fizzBuzz;

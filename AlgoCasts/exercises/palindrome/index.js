@@ -1,19 +1,19 @@
-// --- Directions
-// Given a string, return true if the string is a palindrome
-// or false if it is not.  Palindromes are strings that
-// form the same word if it is reversed. *Do* include spaces
-// and punctuation in determining if the string is a palindrome.
-// --- Examples:
-//   palindrome("abba") === true
-//   palindrome("abcdefg") === false
+// // --- Directions
+// // Given a string, return true if the string is a palindrome
+// // or false if it is not.  Palindromes are strings that
+// // form the same word if it is reversed. *Do* include spaces
+// // and punctuation in determining if the string is a palindrome.
+// // --- Examples:
+// //   palindrome("abba") === true
+// //   palindrome("abcdefg") === false
 
-function palindrome(str) {
-  var reversed = str
-    .split('')
-    .reverse()
-    .join('');
-  return reversed === str;
-}
+// function palindrome(str) {
+//   var reversed = str
+//     .split('')
+//     .reverse()
+//     .join('');
+//   return reversed === str;
+// }
 
 //refactor
 function palindrome(str) {
@@ -30,9 +30,9 @@ function palindrome(str) {
   });
 }
 
-// console.log('abbcx'.split('').pop())
+console.log('abbcx'.split('').pop());
 
 console.log(palindrome('abba'));
-console.log(palindrome('abcdefg'));
+// console.log(palindrome('abcdefg'));
 
 module.exports = palindrome;

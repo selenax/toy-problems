@@ -1,5 +1,5 @@
 // --- Directions
-// Implement a Queue datastructure using two stacks.
+// Implement a Queue data structure using two stacks.
 // *Do not* create an array inside of the 'Queue' class.
 // Queue should implement the methods 'add', 'remove', and 'peek'.
 // For a reminder on what each method does, look back
@@ -16,40 +16,36 @@ const Stack = require('./stack');
 
 class Queue {
   constructor() {
-    this.first = new Stack();
-    this.second = new Stack();
+    this.stackA = new Stack();
+    this.stackB = new Stack();
   }
-
-  add(record) {
-    this.first.push(record);
+  add(value) {
+    this.stackA.push(value);
   }
 
   remove() {
-    while (this.first.peek()) {
-      this.second.push(this.first.pop());
+    while (this.stackA.peek()) {
+      this.stackB.push(this.stackA.pop());
     }
-
-    const record = this.second.pop();
-
-    while (this.second.peek()) {
-      this.first.push(this.second.pop());
+    //storing the item Queue will be removing
+    const removeItem = this.stackB.pop();
+    //restore all items from B to A for future operations
+    while (this.stackB.peek()) {
+      this.stackA.push(this.stackB.pop());
     }
-
-    return record;
+    return removeItem;
   }
 
   peek() {
-    while (this.first.peek()) {
-      this.second.push(this.first.pop());
+    while (this.stackA.peek()) {
+      this.stackB.push(this.stackA.pop());
     }
+    const lastItem = this.stackB.peek();
 
-    const record = this.second.peek();
-
-    while (this.second.peek()) {
-      this.first.push(this.second.pop());
+    while (this.stackB.peek()) {
+      this.stackA.push(this.stackB.pop());
     }
-
-    return record;
+    return lastItem;
   }
 }
 

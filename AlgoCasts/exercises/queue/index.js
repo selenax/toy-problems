@@ -8,9 +8,8 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-
 //FIFO
-//remove: delete from front 
+// NOTE: store using hash
 class Queue {
   constructor() {
     this.storage = {};
@@ -31,22 +30,38 @@ class Queue {
 }
 
 // refactor:
+// NOTE: pseudoclassical
+function Queue() {
+  this.data = [];
+}
+Queue.prototype.add = function(record) {
+  this.data.unshift(record);
+};
+Queue.prototype.remove = function() {
+  return this.data.pop();
+};
 
-
+// NOTE: es6
 class Queue {
   constructor() {
-    this.storage = {};
-
+    this.data = [];
   }
-  //add to 
+  //enqueue
   add(value) {
-    this.storage.unshift(value)
+    this.data.unshift(value);
   }
-
+  //dequeue
   remove() {
-    this.storage.shift();
+    return this.data.pop();
   }
 }
 
+const q = new Queue();
+q.add(1);
+q.add(2);
+q.add(3);
+console.log(q); //[3,2,1]
+console.log(q.remove()); // returns 1;
+console.log(q); //[3,2]
 
 module.exports = Queue;

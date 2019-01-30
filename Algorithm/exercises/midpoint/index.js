@@ -12,9 +12,38 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
+// function midpoint(list) {
+//   let slow = list.getFirst();
+//   let fast = list.getFirst();
+
+//   while (fast.next && fast.next.next) {
+//     slow = slow.next;
+//     fast = fast.next.next;
+//   }
+
+//   return slow;
+// }
+
+// class Node {
+//   constructor(data, next = null) {
+//     this.data = data;
+//     this.next = next;
+//   }
+// }
+
+// class LinkedList {
+//   constructor() {
+//     this.head = null;
+//   }
+
+//   getFirst() {
+//     return this.head;
+//   }
+// }
+
 function midpoint(list) {
-  let slow = list.getFirst();
-  let fast = list.getFirst();
+  let slow = list.getFirst(); //this.head
+  let fast = list.getFirst(); //this.head
 
   while (fast.next && fast.next.next) {
     slow = slow.next;

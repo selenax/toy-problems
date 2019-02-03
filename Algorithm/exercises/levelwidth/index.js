@@ -11,24 +11,40 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-
-function levelWidth(root) {
-  const arr = [root, 's'];
-  const counters = [0];
-
-  while (arr.length > 1) {
-    const node = arr.shift();
-
-    if (node === 's') {
-      counters.push(0);
-      arr.push('s');
-    } else {
-      arr.push(...node.children);
-      counters[counters.length - 1]++;
-    }
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.children = [];
   }
 
-  return counters;
+  add(data) {
+    this.children.push(new Node(data));
+  }
 }
 
+function levelWidth(root) {
+  const queue = [root, 'end'];
+  const counter = [0];
+
+  while (queue.length > 1) {
+    const node = queue.shift();
+    if (node === 'end') {
+      counter.push(0);
+      queue.push('end');
+    } else {
+      queue.push(...node.children);
+      counter[counter.length - 1]++;
+    }
+  }
+  return counter;
+}
+
+const root = new Node(0);
+root.add(1);
+root.add(2);
+root.add(3);
+root.children[0].add(4);
+root.children[2].add(5);
+console.log(root);
+console.log(levelWidth(root));
 module.exports = levelWidth;

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 // --- Directions
 // 1) Create a node class.  The constructor
 // should accept an argument that gets assigned
@@ -12,8 +13,8 @@
 
 class Node {
   constructor(data) {
-    this.children = [];
     this.data = data;
+    this.children = [];
   }
 
   add(data) {
@@ -21,36 +22,53 @@ class Node {
   }
 
   remove(data) {
+    // reassign children so filter won't return a new children
     this.children = this.children.filter(node => node.data !== data);
   }
 }
-
 class Tree {
   constructor() {
-    this.root = null;
-  }
-
-  // push to the front
-  traverseDF(fn) {
-    const arr = [this.root];
-
-    while (arr.length) {
-      const node = arr.shift();
-
-      arr.push(...node.children);
-      fn(node);
-    }
+    this.root = null; // start off with empty tree
   }
 
   traverseBF(fn) {
-    const arr = [this.node];
+    const queue = [this.root];
 
-    while (arr.length) {
-      const node = arr.shift();
+    while (queue.length) {
+      const node = queue.shift();
+      if (node.children) {
+        for (const child of node.children) {
+          queue.push(child);
+        }
+        // refactor to es6 instead of loop
+        // queue.push(...node.children);
+        fn(node);
+      }
+    }
+  }
 
-      arr.push(...node.children);
+  traverseDF(fn) {
+    const stack = [this.root];
+
+    while (stack.length) {
+      const node = stack.shift;
+      stack.unshift(...node.children);
       fn(node);
     }
   }
 }
+
+const tree = new Tree();
+const node = new Node('a');
+tree.root = node;
+tree.root.add('b');
+tree.root.add('c');
+tree.root.children[0].add('d');
+tree.traverseBF(node => {
+  queue.push(node.data);
+}); //['a', 'b', 'c', 'd']);
+tree.traverseDF(node => {
+  stack.push(node.data);
+}); // ['a', 'b', 'd', 'c']
+
 module.exports = { Tree, Node };

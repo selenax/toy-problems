@@ -51,12 +51,44 @@ class Tree {
     const stack = [this.root];
 
     while (stack.length) {
-      const node = stack.shift;
-      stack.unshift(...node.children);
+      const node = stack.pop();
       fn(node);
+      if (!node.children) {
+        continue;
+      }
+      for (let x = node.children.length - 1; x >= 0; x--) {
+        stack.push(node.children[x]);
+      }
     }
+
+    // refactor with es6
+    //   while (stack.length) {
+    //     const node = stack.shift();
+    //     stack.unshift(...node.children);
+    //     fn(node);
+    //   }
+    // }
   }
 }
+
+// Tree.prototype.traverse = function (callback) {
+//   var stack=[this];
+//   var n;
+
+//   while(stack.length>0) {
+
+//     n = stack.pop();
+//     callback(n.value);
+
+//     if (!n.children) {
+//       continue;
+//     }
+
+//     for (var i = n.children.length-1; i>=0; i--) {
+//        stack.push(n.children[i]);
+//     }
+//   }
+// };
 
 const tree = new Tree();
 const node = new Node('a');
@@ -64,11 +96,11 @@ tree.root = node;
 tree.root.add('b');
 tree.root.add('c');
 tree.root.children[0].add('d');
-tree.traverseBF(node => {
-  queue.push(node.data);
-}); //['a', 'b', 'c', 'd']);
-tree.traverseDF(node => {
-  stack.push(node.data);
-}); // ['a', 'b', 'd', 'c']
+// tree.traverseBF(node => {
+//   queue.push(node.data);
+// }); //['a', 'b', 'c', 'd']);
+// tree.traverseDF(node => {
+//   stack.push(node.data);
+// }); // ['a', 'b', 'd', 'c']
 
 module.exports = { Tree, Node };

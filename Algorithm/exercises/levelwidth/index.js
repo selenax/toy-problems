@@ -27,7 +27,7 @@ function levelWidth(root) {
   const counter = [0];
 
   while (queue.length > 1) {
-    const node = queue.shift();
+    let node = queue.shift();
     if (node === 'end') {
       counter.push(0);
       queue.push('end');
@@ -36,6 +36,7 @@ function levelWidth(root) {
       counter[counter.length - 1]++;
     }
   }
+
   return counter;
 }
 
@@ -45,6 +46,6 @@ root.add(2);
 root.add(3);
 root.children[0].add(4);
 root.children[2].add(5);
-console.log(root);
+// console.log(root);
 console.log(levelWidth(root));
 module.exports = levelWidth;

@@ -34,15 +34,16 @@ class Node {
     if (this.data === data) {
       return this;
     }
-
-    if (this.data < data && this.right) {
-      return this.right.contains(data);
-    } else if (this.data > data && this.left) {
+    if (data < this.data && this.left) {
       return this.left.contains(data);
     }
-
+    if (data > this.data && this.right) {
+      return this.right.contains(data);
+    }
     return null;
   }
 }
+
+// function bfs(tree, value) {}
 
 module.exports = Node;

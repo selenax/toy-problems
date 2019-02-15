@@ -1,0 +1,16 @@
+// Check out the resources on the page's right side to learn more about arrays. The video tutorial is by Gayle Laakmann McDowell, author of the best-selling interview book Cracking the Coding Interview.
+
+// A left rotation operation on an array shifts each of the array's elements  unit to the left. For example, if  left rotations are performed on array , then the array would become .
+
+// Given an array  of  integers and a number, , perform  left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.
+
+function rotLeft(a, d) {
+  let index = 0;
+  let temp = a.slice(d % 3);
+  let temp1 = a.slice(0, d % 3);
+
+  return [...temp, ...temp1];
+}
+
+console.log(rotLeft([1, 2, 3], 200)); //[3,4,5,1,2]
+// first [2,3,4,5,1]

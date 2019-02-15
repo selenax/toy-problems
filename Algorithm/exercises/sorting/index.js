@@ -1,38 +1,35 @@
 // --- Directions
 // Implement bubbleSort, selectionSort, and mergeSort
 function bubbleSort(arr) {
-  // Implement bubblesort
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < (arr.length - i - 1); j++) {
-      if (arr[j] > arr[j+1]) {
-        const lesser = arr[j+1];
-        arr[j+1] = arr[j];
-        arr[j] = lesser;
+  for (let x = 0; x < arr.length; x++) {
+    // prevent y from iterate out of bound, length - x - 1
+    for (let y = 0; y < arr.length - x - 1; y++) {
+      if (arr[y] > arr[y + 1]) {
+        const less = arr[y + 1];
+        arr[y + 1] = arr[y];
+        arr[y] = less;
       }
     }
   }
-
-  // return the sorted array
   return arr;
 }
 
 function selectionSort(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let indexOfMin = i;
-
-    for (let j = i+1; j <arr.length; j++) {
-      if (arr[j] < arr[indexOfMin]) {
-        indexOfMin = j;
+  for (let x = 0; x < arr.length; x++) {
+    let minIndex = x;
+    for (let y = x + 1; y < arr.length; y++) {
+      if (arr[y] < arr[minIndex]) {
+        minIndex = y;
       }
     }
-
-    if (indexOfMin !== i) {
-      let lesser = arr[indexOfMin];
-      arr[indexOfMin] = arr[i];
-      arr[i] = lesser;
+    // when minIndex = x, it means the inner loop didnt find a value that is less than value at index x
+    if (minIndex !== x) {
+      // we found a value smaller than arr[x]
+      const less = arr[minIndex];
+      arr[minIndex] = arr[x]; // swap min and current index
+      arr[x] = less; // move minIndex to x
     }
   }
-
   return arr;
 }
 
@@ -40,7 +37,6 @@ function mergeSort(arr) {
   if (arr.length === 1) {
     return arr;
   }
-
   const center = Math.floor(arr.length / 2);
   const left = arr.slice(0, center);
   const right = arr.slice(center);
@@ -61,3 +57,12 @@ function merge(left, right) {
 
   return [...results, ...left, ...right];
 }
+
+console.log(mergeSort([97, 0, 22, -30]));
+
+module.exports = {
+  bubbleSort,
+  selectionSort,
+  mergeSort,
+  merge
+};

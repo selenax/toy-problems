@@ -24,7 +24,7 @@
 
 // NOTE: Medium
 
-var lengthOfLongestSubstring = function(s) {
+let lengthOfLongestSubstring = function (s) {
   let max = 0;
 
   for (let x = 0; x < s.length; x++) {

@@ -5,12 +5,24 @@
 // Given an array  of  integers and a number, , perform  left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.
 
 function rotLeft(a, d) {
-  let index = 0;
-  let temp = a.slice(d % 3);
-  let temp1 = a.slice(0, d % 3);
+  // let temp = a.slice(d % a.length);
+  // console.log(temp);
+  // let temp1 = a.slice(0, d % a.length);
+
+  // return [...temp, ...temp1];
+  for (let x = 0; x < d; x++) {
+    console.log(a);
+    a.push(a.shift());
+  }
+  return a;
+}
+
+function rotLeft(a, d) {
+  let temp = a.slice(d % a.length);
+  let temp1 = a.slice(0, d % a.length);
 
   return [...temp, ...temp1];
 }
 
-console.log(rotLeft([1, 2, 3], 200)); //[3,4,5,1,2]
+console.log(rotLeft([1, 2, 3], 200));
 // first [2,3,4,5,1]

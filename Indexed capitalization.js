@@ -7,14 +7,13 @@
 // capitalize("abcdef",[1,2,5]) = "aBCdeF"
 // capitalize("abcdef",[1,2,5,100]) = "aBCdeF". There is no index 100.
 
-
-function capitalize(s,arr){
-    var str = s.split('')
-    for(var x = 0; x < arr.length; x++) {
-        if(arr[x] <= 26)
-        str[arr[x]] = str[arr[x]].toUpperCase();
+function capitalize(s, arr) {
+  s = s.split('');
+  for (let x = 0; x < arr.length; x++) {
+    if (arr[x] < s.length) {
+      s[arr[x]] = s[arr[x]].toUpperCase();
     }
-    return str.join('');
-  };
-
-  console.log((capitalize("abcdef",[1,2,5,100])))
+  }
+  return s.join('');
+}
+console.log(capitalize('abcdef', [1, 2, 5, 100]));

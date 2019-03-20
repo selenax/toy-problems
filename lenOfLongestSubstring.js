@@ -23,22 +23,49 @@
  */
 
 // NOTE: Medium
+//O(N^2)
+//max variable to keep track of max substr length
+//2 loops
+//variable keep track of substr
+//return max
 
-let lengthOfLongestSubstring = function (s) {
+// let lengthOfLongestSubstring = function(s) {
+//   let max = 0;
+
+//   for (let x = 0; x < s.length; x++) {
+//     let subStr = s[x];
+//     max = Math.max(max, subStr.length);
+//     for (let y = x + 1; y < s.length; y++) {
+//       if (subStr.indexOf(s[y]) === -1) {
+//         subStr += s[y];
+//         max = Math.max(max, subStr.length);
+//       } else {
+//         break;
+//       }
+//     }
+//   }
+
+//   return max;
+// };
+
+//refactor
+//O(N)
+const lengthOfLongestSubstring = str => {
+  let x = 0;
+  let y = 0;
   let max = 0;
-
-  for (let x = 0; x < s.length; x++) {
-    let subStr = s[x];
-    max = Math.max(max, subStr.length);
-    for (let y = x + 1; y < s.length; y++) {
-      if (subStr.indexOf(s[y]) === -1) {
-        subStr += s[y];
-        max = Math.max(max, subStr.length);
-      } else {
-        break;
-      }
+  let hash = {};
+  while (x < str.length) {
+    if (hash[str[x]]) {
+      hash[str[y]] = null;
+      y++;
+    } else {
+      hash[str[x]] = true;
+      max = Math.max(max, x - y + 1);
+      x++;
     }
   }
-
   return max;
 };
+
+console.log(lengthOfLongestSubstring('abcacbdb'));

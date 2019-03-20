@@ -57,9 +57,11 @@ const lengthOfLongestSubstring = str => {
   let hash = {};
   while (x < str.length) {
     if (hash[str[x]]) {
+      //y keeps track of substring
       hash[str[y]] = null;
       y++;
     } else {
+      //x keeps track of current char
       hash[str[x]] = true;
       max = Math.max(max, x - y + 1);
       x++;

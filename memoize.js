@@ -1,4 +1,4 @@
-const memoize = function(cb) {
+const memoize = function(fn) {
   const cache = {};
   return function(...args) {
     //if arg had been called before, return value

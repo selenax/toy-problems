@@ -4,16 +4,16 @@
 
 
 // loop and object.keys = O(2N) => O(N)
-// function countUniqueValues(arr) {
-//     let obj = {}
-//     for(let num of arr) {
-//         obj[num] = ++obj[num] || 1
-//     }
-//     return Object.keys(obj).length;
-// }
-// console.log(countUniqueValues([1,2,3,4,4])); //4
-// console.log(countUniqueValues([])); //0
-// console.log(countUniqueValues([-3,-1,0,0])); //3
+function countUniqueValues(arr) {
+    let obj = {}
+    for(let num of arr) {
+        obj[num] = ++obj[num] || 1
+    }
+    return Object.keys(obj).length;
+}
+console.log(countUniqueValues([1,2,3,4,4])); //4
+console.log(countUniqueValues([])); //0
+console.log(countUniqueValues([-3,-1,0,0])); //3
 
 
 // refactor with 2 left pointers

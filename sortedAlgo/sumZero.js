@@ -3,7 +3,7 @@
 //return array includes both value that sum to zero or undefined if pair doesn't exist
 
 
-// O(n^2)
+// brute force O(n^2)
 function sumZero (arr) {
     //loop outter array
         //loop inner array 
@@ -20,9 +20,8 @@ function sumZero (arr) {
     }
 }
 
-
-//refactor
-//O(N)
+// refactor with 2 pointers
+// O(N)
 function sumZero(arr) {
     let left = 0;  //start index 
     let right = arr[arr.length-1]  //end index

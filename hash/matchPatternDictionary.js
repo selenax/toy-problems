@@ -34,7 +34,7 @@
 
 
 
-// *time: O(N*K) => O(N)
+// *time: O(N*K) 
 // *space: O(N)
 function matchPatterDictionary (dic, pat) {
   let result = [];
@@ -76,14 +76,12 @@ function hashMap(str) {
   // loop over str and for each char, check to see the value in hash,
   // accummulate each value into result
   // return result
-  for (let prop of str) {
-    // console.log(prop, "😅");
-    if (hash[prop]) {
-      result += hash[prop];
+  for (let char of str) {
+    // console.log(char, "😅");
+    if (hash[char]) {
+      result += hash[char];
     }
   }
-  console.log(result);
-  
   return result;
 }
 // console.log(hashMap("abb")); // 122 

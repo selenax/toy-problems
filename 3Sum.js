@@ -1,65 +1,95 @@
-// ### [15 3Sum](https://leetcode.com/problems/3sum/)
-
-// Difficulty: **Medium**
-
-// Related Topics: [Array](https://leetcode.com/tag/array/), [Two Pointers](https://leetcode.com/tag/two-pointers/), [Sorting](https://leetcode.com/tag/sorting/)
-
-// Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+// 15. 3Sum (MEDIUM)
+// Hint: Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 // Notice that the solution set must not contain duplicate triplets.
 
-// **Example 1:**
+// Example 1:
 // Input: nums = [-1,0,1,2,-1,-4]
 // Output: [[-1,-1,2],[-1,0,1]]
+// Explanation:
+// nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+// nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+// nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+// The distinct triplets are [-1,0,1] and [-1,-1,2].
+// Notice that the order of the output and the order of the triplets does not matter.
 
-// **Example 2:**
-// Input: nums = []
+// Example 2:
+// Input: nums = [0,1,1]
 // Output: []
+// Explanation: The only possible triplet does not sum up to 0.
 
-// **Example 3:**
-// Input: nums = [0]
-// Output: []
+// Example 3:
+// Input: nums = [0,0,0]
+// Output: [[0,0,0]]
+// Explanation: The only possible triplet sums up to 0.
 
-// all 3 element that will sum to 0 as long as they are not repeated.
-// order doesnt matter
 
-//ALGORITHM: 2 Pointer
-//TIME:O(N^2) SPACE:O(1)
-const threeSum = function (nums) {
+
+
+// ALGORITHM: 3 POINTER APPROACH BY SORT + 2 POINTER
+// TIME:O(N^2) SPACE:O(N)
+// input: number[]
+// output: number[][] - each inner array is a unique triplet summing to 0;
+// key - unique indices but values could be repeated, also no repeat triples 
+
+/* use 3 pointers approach - (x,y,z) - anchor x, and move y and z around to find target
+
+	1. sort array to both help handle duplicate and use 2 pointer technique 
+	2. anchor x starting index 0
+	3. for each x, initalize two pointers: y at x + 1, z at the end of the array
+	4. as y and z move toward each other, we check sum: arr[x] + arr[y] + arr[z]
+		1. if sum = target, add these triplets to result and check for y & z duplicates as the curr combination is no longer unique  
+		2. if sum < target, incrememt y
+		3. if sum > target, decrement z 
+	5. also check x for duplicates to avoid same anchor
+
+	Edge case: 
+	1. if array has fewer than 3 elements return early w/ []
+*/
+
+const threeSum = (nums) => {
 	let result = [];
-	nums.sort((a, b) => a - b);
 
-	if (nums.length < 3) return result;
+	// shallow copy of sorted arry
+	const sorted = [...nums].sort((a, b) => a - b);
 
-	// x will be anchored at each iteration as y and z moves around to check for 0
-	for (let x = 0; x < nums.length - 2; x++) {
-		// since we can't have duplicates, skip current iteration if nums[x] is same as previous
-		if (x > 0 && nums[x] === nums[x - 1]) continue;
+	// x stops 2 indices before end of array taking into account of y and z 
+	for (let x = 0; x < sorted.length - 2; x++) {
+		// check x duplicates & avoid comparing array[-1]
+		if(x > 0 && sorted[x] === sorted[x-1]) continue;
 
 		let y = x + 1;
-		let z = nums.length - 1;
+		let z = sorted.length - 1;
 
-		while (y < z) {
-			let sum = nums[x] + nums[y] + nums[z];
-			//if sum = 0, we have a match, push to result
-			if (sum === 0) {
-				result.push([nums[x], nums[y], nums[z]]);
-				//since no duplicates, we don't want y and z if they will be the same values
-				while (nums[y] === nums[y + 1]) y++;
-				while (nums[z] === nums[z - 1]) z--;
-				//increment and decrement y and z to check for next sum
-				y++;
-				z--;
+		while(y < z) {
+			let sum = sorted[x] + sorted[y] + sorted[z]
+			// found target
+			if(sum === 0) {
+				result.push([sorted[x], sorted[y],sorted[z]]);
+			
+			// check for next duplicate y & z 
+			while(sorted[y] === sorted[y+1]) y++;
+			while(sorted[z] === sorted[z-1]) z--;
+
+			// increment & decrement y and z to check for next sum
+			y++;
+			z--;
 			} else if (sum < 0) {
-				y++; // make y bigger if sum is smaller than 0
+				y++
 			} else {
-				z--; // make z smaller if sum is bigger than 0
+				z--;
 			}
 		}
 	}
 	return result;
 };
+console.log(threeSum([])) //[]
+console.log(threeSum([-1, 0, 1, 2, -1, -4])); //[[-1,-1,2],[-1,0,1]]
+console.log(threeSum([0, 1, 1])); //[]
+console.log(threeSum([0, 0, 0])); //[[0,0,0]]
+console.log(threeSum([-2, 0, 1, 1, 2])); // [[-2, 0, 2], [-2, 1, 1]]
+console.log(threeSum([-1, 0, 1, 0])); // [[-1, 0, 1]]
+console.log(threeSum([-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6]));  
+// [[-4, -2, 6], [-4, 0, 4], [-4, 1, 3], [-4, 2, 2], [-2, -2, 4], [-2, 0, 2]]
 
-console.log(threeSum([-2, 0, 1, 1, 2])); //[ [ -2, 0, 2 ], [ -2, 1, 1 ] ]
-console.log(threeSum([-1, 0, 1, 2, -1, -4])); //[ [ -1, -1, 2 ], [ -1, 0, 1 ] ]
-console.log(threeSum([1, -1, -1, 0])); //[ [ -1, 0, 1 ] ]
+

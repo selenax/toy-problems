@@ -21,39 +21,61 @@ sumarize the problem:
 3. constraint - overlap when start is smaller than or equal to the previous end 
 4. output - a new array of nonoverlapping intervals 
 
+edge case: 
+1. []
+2. len=1 
+3. end == start
+    [1,3],[3,4]  => [1,4]
 
+4. all overlap
+    [1,3],[2,6],[3,5],[3,7] 
+    [1,6]
+                  ==> [1,7]
+
+5. non overlap 
+    [1,2],[3,4],[5,6]
 */
 
 const mergeIntervals = (arr) => {
-  // initalize result array
+  // edge case
+  if (arr.length <= 1) return arr;
+
   // sort array by start time to process events chronologically
-  // overlap when start <= previous end, push [previous start, current end] to result
+  arr.sort((a, b) => a[0] - b[0]);
 
-  let sorted = [...arr].sort((a, b) => a[0] - b[0]);
-  let result = [];
-  for (let i = 0; i < sorted.length; i++) {
-    let last = result[result.length - 1];
-    console.log(last);
+  // initalize result array
+  let result = [arr[0]];
 
-    if (result.length && sorted[i][0] <= result[result.length - 1][1]) {
-      console.log(result[result.length - 1][1], 'result[result.length]');
+  for (let i = 1; i < arr.length; i++) {
+    const [currStart, currEnd] = arr[i];
+    const [prevStart, prevEnd] = result[result.length - 1];
 
-      last = [last[0], sorted[i][1]]; //TODO: this isn't reassigning the value in result
+    // overlap when prevEnd greater than or equal to currStart
+    if (prevEnd >= currStart) {
+      // merge by updating max end
+      result[result.length - 1][1] = Math.max(currEnd, prevEnd);
+    } else {
+      // no overlap
+      result.push(arr[i]);
     }
-    result.push(sorted[i]);
   }
+  // return
   return result;
 };
 
-// console.log(
-//   mergeIntervals([
-//     [1, 3],
-//     [2, 6],
-//     [8, 10],
-//     [15, 18],
-//   ])
-// );
-// [[1,6],[8,10],[15,18]]
+console.log(
+  mergeIntervals([
+    [1, 3],
+    [2, 6],
+    [8, 10],
+    [15, 18],
+  ])
+);
+// [
+//   [1, 6],
+//   [8, 10],
+//   [15, 18],
+// ];
 
 console.log(
   mergeIntervals([

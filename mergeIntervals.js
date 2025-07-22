@@ -42,13 +42,16 @@ Then we sort the intervals by their start time, which ensures we’re processing
 
 We initialize a result array with the first interval — this will hold our merged output.
 
-From there, we loop through the rest of the intervals and compare each one to the last interval in result. If the current interval overlaps — meaning its start time is less than or equal to the previous end — then we merge the two by updating the previous interval’s end to the max of both ends.
+From there, we loop through the rest of the intervals and compare each one to the last interval in result. 
+If the current interval overlaps — meaning its start time is less than or equal to the previous end — then 
+we merge the two by updating the previous interval’s end to the max of both ends.
 
 If there’s no overlap, we just push the current interval into the result as a new entry.
 
 Once we finish iterating, result will contain all the merged, non-overlapping intervals
 */
 
+//TIME: O(n log n) Space:O(n)
 const mergeIntervals = (arr) => {
   // edge case
   if (arr.length <= 1) return arr;
